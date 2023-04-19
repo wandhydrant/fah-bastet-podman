@@ -13,9 +13,9 @@ RUN apt-get update \
     && touch /usr/bin/systemctl && chmod +x /usr/bin/systemctl \
     # download and verify checksum
     && curl -fsSL \
-      https://download.foldingathome.org/releases/beta/fah-client/debian-stable-64bit/release/fah-client_8.1.16_amd64.deb \
+      https://download.foldingathome.org/releases/beta/fah-client/debian-stable-64bit/release/fah-client_8.1.18_amd64.deb \
       -o fah.deb \
-    && echo "0f342d0d09d521346b2b7901a9f15c120b73c0237523d294cf02efc6ae201bb6 fah.deb" \
+    && echo "27807eb85dc505342ece480b7bfe7bf4851da8eee4542410f66f758eb42fceef fah.deb" \
       | sha256sum -c --strict - \
     # install and cleanup; dpkg will complain about missing systemctl but that is OK
     && DEBIAN_FRONTEND=noninteractive dpkg --install fah.deb && rm fah.deb \
