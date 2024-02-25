@@ -64,7 +64,7 @@ Also, just to start getting CPU units or to enable the GPU,
 I had to go once into the web app. Once running, the web app need not
 be open for new work units to arrive.
 
-Connect to [https://app.foldingathome.org](https://beta.foldingathome.org) (or a
+Connect to [https://beta.foldingathome.org](https://beta.foldingathome.org) (or a
 [local version](https://github.com/FoldingAtHome/fah-web-client-bastet))
 from a browser on your podman host, and you should be able to control
 your client.
