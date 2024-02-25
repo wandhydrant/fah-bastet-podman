@@ -31,7 +31,6 @@ then write your ``fah-data/config.xml``, for example:
     <config>
       <user v='YOUR_USERNAME'/>
       <passkey v='YOUR_PASSKEY'/>
-      <cpus v='<config>
       <verbosity v='5'/>
       <log-level v='true'/>
       <http-addresses v='0.0.0.0:7396'/>
