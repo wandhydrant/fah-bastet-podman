@@ -4,7 +4,7 @@ Based on the [official GPU containers for v7](https://github.com/FoldingAtHome/c
 but for usage with the [new v8 client](https://github.com/FoldingAtHome/fah-client-bastet)
 (currently in beta) and rootless Podman (instead of Docker).
 
-Tested with Podman 3.0.1 on a Debian 11.6 (bullseye) host.
+Tested with Podman 4.3.1 on a Debian 12.5 (bookworm) host.
 
 *These are inofficial containers that fit my personal purposes.*
 There is [one CPU version](fah-bastet-podman-cpu) and
@@ -64,7 +64,7 @@ Also, just to start getting CPU units or to enable the GPU,
 I had to go once into the web app. Once running, the web app need not
 be open for new work units to arrive.
 
-Connect to [https://app.foldingathome.org](https://app.foldingathome.org) (or a
+Connect to [https://app.foldingathome.org](https://beta.foldingathome.org) (or a
 [local version](https://github.com/FoldingAtHome/fah-web-client-bastet))
 from a browser on your podman host, and you should be able to control
 your client.

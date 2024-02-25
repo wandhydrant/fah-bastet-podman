@@ -1,4 +1,4 @@
-FROM docker.io/nvidia/cuda:11.8.0-base-ubuntu22.04
+FROM docker.io/nvidia/cuda:12.3.1-base-ubuntu22.04
 LABEL description="Folding@home v8 GPU/Nvidia Container"
 
 RUN apt-get update \
@@ -9,13 +9,15 @@ RUN apt-get update \
     # point at lib mapped in by container runtime
     && mkdir -p /etc/OpenCL/vendors \
     && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd \
-    # next line gets past the fahclient.postinst 
+    # next line gets past the fahclient.postinst
     && touch /usr/bin/systemctl && chmod +x /usr/bin/systemctl \
+    # group must be present for the FAH install script
+    && groupadd render \
     # download and verify checksum
     && curl -fsSL \
-      https://download.foldingathome.org/releases/beta/fah-client/debian-stable-64bit/release/fah-client_8.1.18_amd64.deb \
+      https://download.foldingathome.org/releases/beta/fah-client/debian-10-64bit/release/fah-client_8.3.5_amd64.deb \
       -o fah.deb \
-    && echo "27807eb85dc505342ece480b7bfe7bf4851da8eee4542410f66f758eb42fceef fah.deb" \
+    && echo "d46091033a3982d725aabc714fde6b9ea47a67b4b1338877fcf3ace621269b9d fah.deb" \
       | sha256sum -c --strict - \
     # install and cleanup; dpkg will complain about missing systemctl but that is OK
     && DEBIAN_FRONTEND=noninteractive dpkg --install fah.deb && rm fah.deb \
