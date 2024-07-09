@@ -2,9 +2,9 @@
 
 Based on the [official GPU containers for v7](https://github.com/FoldingAtHome/containers)
 but for usage with the [new v8 client](https://github.com/FoldingAtHome/fah-client-bastet)
-(currently in beta) and rootless Podman (instead of Docker).
+and rootless Podman (instead of Docker).
 
-Tested with Podman 4.3.1 on a Debian 12.5 (bookworm) host.
+Tested with Podman 4.3.1 on a Debian 12.6 (bookworm) host.
 
 *These are inofficial containers that fit my personal purposes.*
 There is [one CPU version](fah-bastet-podman-cpu) and
@@ -34,9 +34,10 @@ then write your ``fah-data/config.xml``, for example:
       <verbosity v='5'/>
       <log-level v='true'/>
       <http-addresses v='0.0.0.0:7396'/>
+      <allow v='0.0.0.0/0'/>
     </config>
 
-As for the ``http-addresses`` line - requests from the host will appear inside
+As for the ``http-addresses`` and ``allow`` lines - requests from the host will appear inside
 the container as coming from an (internal) IP address, not localhost.
 Inside the container, there is only one "network interface", for communicating
 with the host. So inside the container, fah-client must listen to
@@ -75,3 +76,5 @@ is to make a SSH redirection from your desktop machine (where the browser
 is running), like this:
 
     ssh -fNL 127.0.0.1:7396:127.0.0.1:7396 myuser@fahclient-container-host
+
+Or use their new remote-control feature with logins.
