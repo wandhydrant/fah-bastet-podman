@@ -4,7 +4,7 @@ Based on the [official GPU containers for v7](https://github.com/FoldingAtHome/c
 but for usage with the [new v8 client](https://github.com/FoldingAtHome/fah-client-bastet)
 and rootless Podman (instead of Docker).
 
-Tested with Podman 4.3.1 on a Debian 12.6 (bookworm) host.
+Tested with Podman 4.3.1 on a Debian 12.7 (bookworm) host.
 
 *These are inofficial containers that fit my personal purposes.*
 There is [one CPU version](fah-bastet-podman-cpu) and
