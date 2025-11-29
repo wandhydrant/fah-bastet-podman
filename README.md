@@ -1,4 +1,10 @@
-# Folding@home v8 (Bastet) containers for rootless Podman
+# Not maintained any more
+
+There is a [container on linuxserver.io](https://docs.linuxserver.io/images/docker-foldingathome/)
+that works well for me with Podman; that's why I don't longer need to maintain my own Dockerfile
+any more.
+
+### Folding@home v8 (Bastet) containers for rootless Podman
 
 Based on the [official GPU containers for v7](https://github.com/FoldingAtHome/containers)
 but for usage with the [new v8 client](https://github.com/FoldingAtHome/fah-client-bastet)
@@ -14,7 +20,7 @@ You may need to adapt base images if my choices do not
 fit your hardware setup; you may also need to change the client version
 (and the checksum) if there is a newer one.
 
-## Why?
+#### Why?
 
 It is certainly easier to run the fah-client directly on your system.
 But for better isolation, policy reasons, or re-use of existing
@@ -23,7 +29,7 @@ infrastructures, you may prefer to run it in a container.
 I like podman as it does not require a daemon, and containers can be run
 from a non-root account (by now, Docker can do that, too).
 
-## Prepare configuration
+#### Prepare configuration
 
 Create a ``fah-data`` directory which will be mounted in the container;
 then write your ``fah-data/config.xml``, for example:
@@ -44,7 +50,7 @@ with the host. So inside the container, fah-client must listen to
 "all interfaces". With the default ``127.0.0.1:7396`` it could not
 serve any requests.
 
-## Ownership of your ``fah-data`` directory
+#### Ownership of your ``fah-data`` directory
 
 When using rootless podman, your container user
 will be mapped to a sub-uid associated with your system user.
@@ -56,7 +62,7 @@ You could calculate these permissions, or just cheat and have your
 and group ID the created files have, and then set the correct
 permissions with ``sudo chown -R UID:GID FAH_DATA_DIR``.
 
-## Using the web app to start and control folding
+#### Using the web app to start and control folding
 
 The v7 client would have CLI options such as ``--send-finish`` or
 ``send-unpause``; for v8, it seems that you need to use the web app.
@@ -69,7 +75,7 @@ Connect to [https://v8-3.foldingathome.org](https://v8-3.foldingathome.org) (or 
 from a browser on your podman host, and you should be able to control
 your client.
   
-## Connecting to a headless fah-client box
+#### Connecting to a headless fah-client box
 
 If your fah-client container is running on a headless box, one possibility
 is to make a SSH redirection from your desktop machine (where the browser
